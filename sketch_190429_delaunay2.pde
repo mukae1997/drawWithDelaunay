@@ -1,13 +1,10 @@
-import megamu.mesh.*;
-
+ 
 import org.processing.wiki.triangulate.*;
 
 
 float[] rand;
 PVector[] rndvec;
-
-Delaunay myDelaunay;
-float[][] points;
+  
 
 int total;
 
@@ -61,13 +58,13 @@ void draw() {
 
   triangles.clear();
   triangles = Triangulate.triangulate(points);
-
+  int amp = 40;
   strokeWeight(1.50);
   stroke(#fbdce4, 48);
   drawTriangles(triangles);
   strokeWeight(1.39);
   stroke(#7d34a7, 40);
-  drawTriangles(triangles, RADIATION, 7);
+  drawTriangles(triangles, RADIATION, floor(amp*sin(frameCount * speed) + amp));
 }
 
 void drawTriangles(ArrayList tris) {
